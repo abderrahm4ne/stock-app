@@ -5,5 +5,5 @@ const allowedInvokeChannels = [
 ];
 
 contextBridge.exposeInMainWorld('electron', {
-  sendMessage: (msg) => ipcRenderer.send('message', msg)
+  sendMessage: (msg: object) => ipcRenderer.send('message', msg)
 });

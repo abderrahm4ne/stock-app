@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron'
 import path from 'path'
 import { fileURLToPath } from 'url';
+import connectionToDataBase from './backend/mongo/mongo.ts'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +22,7 @@ async function createWindow() {
 
 app.whenReady().then(async () => {
     createWindow();
+    await connectionToDataBase();
 
     app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
